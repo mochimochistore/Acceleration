@@ -14,17 +14,17 @@ import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
-    //
+    // ログ出力用タグ名
     private static final String TAG = "MainActivity";
 
-    //
+    // センサーマネージャ
     private SensorManager mSensorManager;
-    //
+    // 加速度センサーを取り扱うオブジェクト
     private Sensor mSensor;
-    //
+    // UI への処理実行を管理するハンドラ
     private Handler mHandler;
 
-    //
+    // センサー計測結果を表示する TextView オブジェクト
     private TextView mTextViewAnnotationX;
     private TextView mTextViewAnnotationY;
     private TextView mTextViewAnnotationZ;
@@ -32,105 +32,49 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private TextView mTextViewAnnotationMaxY;
     private TextView mTextViewAnnotationMaxZ;
 
-    //
+    // 加速度最大値を保持するフィールド
     private float mAccelerationMaxX;
     private float mAccelerationMaxY;
     private float mAccelerationMaxZ;
 
-    @SuppressLint("HandlerLeak") //
+    @SuppressLint("HandlerLeak") // Handler のメモリリーク渓谷を表示させないための設定
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        //
-        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
-
-        //
-        mTextViewAnnotationX = (TextView)findViewById(R.id.acceleration_x);
-        mTextViewAnnotationY = (TextView)findViewById(R.id.acceleration_y);
-        mTextViewAnnotationZ = (TextView)findViewById(R.id.acceleration_z);
-        mTextViewAnnotationMaxX = (TextView)findViewById(R.id.acceleration_max_x);
-        mTextViewAnnotationMaxY = (TextView)findViewById(R.id.acceleration_max_y);
-        mTextViewAnnotationMaxZ = (TextView)findViewById(R.id.acceleration_max_z);
-
-        //
-        mAccelerationMaxX = 0;
-        mAccelerationMaxY = 0;
-        mAccelerationMaxZ = 0;
-
-        //
-        mHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                Acceleration acceleration = (Acceleration)msg.obj;
-                //
-                if (Math.abs(acceleration.getX()) > Math.abs(mAccelerationMaxX)) {
-                    mAccelerationMaxX = acceleration.getX();
-                }
-                if (Math.abs(acceleration.getY()) > Math.abs(mAccelerationMaxY)) {
-                    mAccelerationMaxY = acceleration.getY();
-                }
-                if (Math.abs(acceleration.getZ()) > Math.abs(mAccelerationMaxY)) {
-                    mAccelerationMaxZ = acceleration.getZ();
-                }
-
-                //
-                mTextViewAnnotationX.setText("x: " + acceleration.getX());
-                mTextViewAnnotationY.setText("y: " + acceleration.getY());
-                mTextViewAnnotationZ.setText("z: " + acceleration.getZ());
-                //
-                mTextViewAnnotationMaxX.setText("max x: " + mAccelerationMaxX);
-                mTextViewAnnotationMaxY.setText("max y: " + mAccelerationMaxY);
-                mTextViewAnnotationMaxZ.setText("max z: " + mAccelerationMaxZ);
-            }
-        };
+        // TODO: フィールドの初期化と、センサー計測値の更新時に呼び出されるハンドルメソッドの定義
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        if (mSensor != null) {
-            //
-            mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
-
-        } else {
-            //
-        }
+        // TODO: 加速度センサーの計測を開始
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        if (mSensor != null) {
-            //
-            mSensorManager.unregisterListener(this);
-
-        } else {
-            //
-        }
+        // TODO: 加速度センサーの計測を解除
     }
 
+    // SensorEventListener インタフェースが提供するメソッドの実装
     @Override
     public void onSensorChanged(SensorEvent event) {
         Log.d(TAG, "acceleration x: " + event.values[0] + ", y: " + event.values[1] + ", z: " + event.values[2]);
 
-        //
-        Acceleration acceleration = new Acceleration(event.values[0], event.values[1], event.values[2]);
-        //
-        mHandler.sendMessage(Message.obtain(mHandler, 0, acceleration));
+        // TODO: 取得した加速度計測値を画面に描画
     }
 
+    // SensorEventListener インタフェースが提供するメソッドの実装
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        //
+        // 何もしない
     }
 
-    //
+    // 加速度センサーの計測値を一時的に保持するためのクラス
     private class Acceleration {
         private float x;
         private float y;

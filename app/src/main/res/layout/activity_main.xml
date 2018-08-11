@@ -15,58 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/acceleration_x"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="x:" />
-            <TextView
-                android:id="@+id/acceleration_max_x"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="max x:"
-                android:textStyle="bold"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/acceleration_y"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="y:" />
-            <TextView
-                android:id="@+id/acceleration_max_y"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="max y:"
-                android:textStyle="bold"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/acceleration_z"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="z:" />
-            <TextView
-                android:id="@+id/acceleration_max_z"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="max z:"
-                android:textStyle="bold"/>
-        </LinearLayout>
+        <!-- // TODO: 加速度検出結果を表示するための TextView を配置 -->
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
