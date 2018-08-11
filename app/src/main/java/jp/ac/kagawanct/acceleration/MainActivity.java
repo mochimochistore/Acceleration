@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private float mAccelerationMaxY;
     private float mAccelerationMaxZ;
 
-    @SuppressLint("HandlerLeak") // Handler のメモリリーク渓谷を表示させないための設定
+    @SuppressLint("HandlerLeak") // Handler のメモリリーク警告を表示させないための設定
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
