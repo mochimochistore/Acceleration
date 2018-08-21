@@ -50,14 +50,28 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onResume() {
         super.onResume();
 
-        // TODO: 加速度センサーの計測を開始
+        if (mSensor != null) {
+            // 加速度センサーの計測を開始する
+            mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        } else {
+            // 加速度センサーが利用できない場合
+            Log.w(TAG, "Acceleration sensor is not available.");
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        // TODO: 加速度センサーの計測を解除
+        if (mSensor != null) {
+            // 加速度センサーの計測を解除する
+            mSensorManager.unregisterListener(this);
+
+        } else {
+            // 加速度センサーが利用できない場合
+            Log.w(TAG, "Acceleration sensor is not available.");
+        }
     }
 
     // SensorEventListener インタフェースが提供するメソッドの実装
