@@ -43,7 +43,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TODO: フィールドの初期化と、センサー計測値の更新時に呼び出されるハンドルメソッドの定義
+        // TODO: フィールドの初期化
+
+        // センサー計測結果を表示する TextView オブジェクトのインスタンスを取得
+        mTextViewAnnotationX = (TextView)findViewById(R.id.acceleration_x);
+        mTextViewAnnotationY = (TextView)findViewById(R.id.acceleration_y);
+        mTextViewAnnotationZ = (TextView)findViewById(R.id.acceleration_z);
+        mTextViewAnnotationMaxX = (TextView)findViewById(R.id.acceleration_max_x);
+        mTextViewAnnotationMaxY = (TextView)findViewById(R.id.acceleration_max_y);
+        mTextViewAnnotationMaxZ = (TextView)findViewById(R.id.acceleration_max_z);
+
+        // 最大値を保持するフィールドを初期化
+        mAccelerationMaxX = 0;
+        mAccelerationMaxY = 0;
+        mAccelerationMaxZ = 0;
+
+        // TODO: センサー計測値の更新時に呼び出されるハンドルメソッドの定義
+
     }
 
     @Override
