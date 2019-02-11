@@ -1,4 +1,4 @@
-package jp.ac.kagawanct.acceleration;
+package jp.ac.yuge.acceleration;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
